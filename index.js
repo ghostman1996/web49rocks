@@ -1,17 +1,21 @@
-const cohort1 = process.argv[2];
-const user = process.env.USERDOMAIN;
+//to inject the config vars inside the .env
+require('dotenv').config()
 
-if (cohort1 === "web-49") {
- console.log(`${cohort1} is the best forever!`);
-} else {
- console.log(`booooh cohort ${cohort1}`);
-}
+
+// const cohort1 = process.argv[2];
+// const user = process.env.USERDOMAIN;
+
+// if (cohort1 === "web-49") {
+//  console.log(`${cohort1} is the best forever!`);
+// } else {
+//  console.log(`booooh cohort ${cohort1}`);
+// }
 
 console.log(`the user is ${user}`);
 
 const express = require("express");
 const app = express();
-const port = 9000;
+const port = process.env.PORT || 9000;
 
 app.get("/hello", (req, res) => {
  res.json({ message: "hey there" });
